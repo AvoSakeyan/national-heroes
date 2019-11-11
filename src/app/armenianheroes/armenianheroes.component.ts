@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 
 
@@ -9,9 +9,13 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ArmenianheroesComponent implements OnInit {
   @Input() singleHero;
-
+  @Output() onDeleteHero: EventEmitter<number> = new EventEmitter<number>();
   constructor() { }
   ngOnInit() {
+  }
+
+  delHero(id){
+      this.onDeleteHero.emit(id);
   }
 
 }

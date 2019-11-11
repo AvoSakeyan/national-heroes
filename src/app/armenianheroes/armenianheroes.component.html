@@ -7,6 +7,7 @@
           <p class="card-text"> <small class="text-secondary font-italic"> Պարգևատրվել է: {{singleHero.gettingDate}} </small></p>
           <p class="card-text"><small class="text-secondary font-italic"> Ապրել է: {{singleHero.birthDay}}
             -{{singleHero.deathDay}}</small></p>
+          <button class="btn btn-danger" (click)="delHero(singleHero.id)"> Delete </button>
         </div>
     </div>
   </div>

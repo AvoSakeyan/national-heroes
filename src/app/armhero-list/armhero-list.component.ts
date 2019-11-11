@@ -42,14 +42,14 @@ export class ArmheroListComponent  {
     {
       id: 4,
       name: 'Մոնթե Չառլզի Մելքոնյան',
-      gettingDate: 1996 + 'հետմահու',
+      gettingDate: 1996 + ' հետմահու',
       birthDay:  1957,
       placeofbirth: 'USA, Kalifornia/Vayselia',
       deathDay: 1993,
       forWhat: 'Հայրենիքի պաշտպանության գործում համազգային նշանակություն ունեցող բացառիկ ծառայությունների համար'
     },
     {
-      id: 4,
+      id: 5,
       name: 'Մոնթե Չառլզի Մելքոնյան',
       gettingDate: 1996,
       birthDay:  1957,
@@ -61,8 +61,12 @@ export class ArmheroListComponent  {
 ]
 
 
+
+
   constructor() { }
 
-
+  deleteFromList(id) {
+     this.heroes = this.heroes.filter(hero =>hero.id !== id);
+  }
 
 }

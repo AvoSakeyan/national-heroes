@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { ArmheroListComponent } from './armhero-list/armhero-list.component';
 import { ArmenianheroesComponent } from './armenianheroes/armenianheroes.component';
 import { AlertModule } from 'ngx-bootstrap';
+import { OnHoverDirective } from './on-hover.directive';
 @NgModule({
   declarations: [
     AppComponent,
     ArmheroListComponent,
-    ArmenianheroesComponent
+    ArmenianheroesComponent,
+    OnHoverDirective
   ],
   imports: [
     BrowserModule,
