@@ -1,8 +1,28 @@
-<div>
-  <div class="row">
-    <app-armenianheroes
-      *ngFor="let hero of heroes"
-      [singleHero] = hero>
-    </app-armenianheroes>
+<div class="row" style="margin: 3%">
+  <div class="col-12">
+    <button class="btn btn-success" (click)="onOpenForm()">Add Hero</button>
+    <div *ngIf="openAddForm" style="margin-top: 3%">
+      <div class="form-group">
+        <label>Անունը</label>
+        <input type="text" class="form-control" aria-describedby="emailHelp"
+               placeholder="Name" [(ngModel)]="newHero.name">
+        <label>Պարգևատրվել է</label>
+        <input type="number" class="form-control" aria-describedby="emailHelp"
+               placeholder="Getting Date" [(ngModel)]="newHero.gettingDate" >
+        <label>Ծննդյան տարեթիվ</label>
+        <input type="number" class="form-control" aria-describedby="emailHelp"
+               placeholder="Birth Day" [(ngModel)]="newHero.birthDay">
+        <label>Մահվան տարեթիվ</label>
+        <input type="number" class="form-control" aria-describedby="emailHelp"
+               placeholder="Death Day" [(ngModel)]="newHero.deathDay">
+        <br>
+        <button class="btn btn-success card-link" (click)="onAddHero()">Save</button>
+        <button class="btn btn-info card-link" (click)="onOpenForm()">Close</button>
+      </div>
+    </div>
   </div>
+  <app-armenianheroes
+    *ngFor="let hero of heroes"
+    [singleHero]=hero>
+  </app-armenianheroes>
 </div>

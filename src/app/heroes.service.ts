@@ -64,4 +64,16 @@ export class HeroesService {
     this.heroes = this.heroes.filter(hero => hero.id !== id);
     this.heroListChanged.emit(this.heroes);
   }
+
+  addHero(hero: Hero) {
+    this.heroes.push({
+      id: this.heroes.length + 1,
+      name: hero.name,
+      gettingDate: hero.gettingDate,
+      birthDay: hero.birthDay,
+      placeofbirth: '',
+      deathDay: hero.deathDay,
+      forWhat: ''
+    });
+  }
 }

@@ -9,15 +9,33 @@ import { Hero } from '../hero.type';
 })
 export class ArmheroListComponent implements OnInit {
   heroes: Hero[];
+  openAddForm: boolean;
+  newHero: Hero = {
+    id: 0,
+    name: '',
+    gettingDate: 0,
+    birthDay: 0,
+    placeofbirth: '',
+    deathDay: 0,
+    forWhat: ''
+  };
 
   constructor(private heroesService: HeroesService) {
+  }
+
+  onOpenForm() {
+    this.openAddForm = !this.openAddForm;
+  }
+
+  onAddHero() {
+    this.heroesService.addHero(this.newHero);
   }
 
   ngOnInit(): void {
     this.heroes = this.heroesService.getHeroesList();
     this.heroesService.heroListChanged
-      .subscribe((ingredients) => {
-        this.heroes = ingredients;
+      .subscribe((heroes) => {
+        this.heroes = heroes;
       });
   }
 }
