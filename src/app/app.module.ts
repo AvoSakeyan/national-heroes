@@ -6,18 +6,26 @@ import { AppComponent } from './app.component';
 import { ArmheroListComponent } from './armhero-list/armhero-list.component';
 import { ArmenianheroesComponent } from './armenianheroes/armenianheroes.component';
 import { AlertModule } from 'ngx-bootstrap';
+import { DivHoverDirective } from './div-hover.diretive';
+import { HeroesService } from './heroes.service';
+import {FormsModule} from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
     ArmheroListComponent,
-    ArmenianheroesComponent
+    ArmenianheroesComponent,
+    DivHoverDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AlertModule.forRoot(),
+    FormsModule,
   ],
-  providers: [],
+  providers: [
+    HeroesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

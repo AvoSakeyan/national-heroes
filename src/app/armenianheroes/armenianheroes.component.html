@@ -1,17 +1,33 @@
-
-<div class="card m-3 ">
+<div class="card m-3" appDivHover>
   <div class="row no-gutters">
     <div class="col-md-12">
-        <div class="card-body">
-          <h5 class="card-title">{{singleHero.name}}</h5>
-          <p class="card-text"> <small class="text-secondary font-italic"> Պարգևատրվել է: {{singleHero.gettingDate}} </small></p>
-          <p class="card-text"><small class="text-secondary font-italic"> Ապրել է: {{singleHero.birthDay}}
-            -{{singleHero.deathDay}}</small></p>
+      <div class="card-body">
+        <h5 class="card-title">{{singleHero.name}}</h5>
+        <p class="card-text"><small class="text-secondary font-italic"> Պարգևատրվել
+          է: {{singleHero.gettingDate}} </small></p>
+        <p class="card-text"><small class="text-secondary font-italic"> Ապրել է: {{singleHero.birthDay}}
+          -{{singleHero.deathDay}}</small></p>
+        <button class="btn btn-warning card-link" (click)="onOpenForm()">Edit</button>
+        <button class="btn btn-danger card-link" (click)="onDeleteHero(singleHero.id)">Delete</button>
+        <div *ngIf="openEditInput" style="margin-top: 10%">
+          <div class="form-group">
+            <label>Անունը</label>
+            <input type="text" class="form-control" aria-describedby="emailHelp"
+                   placeholder="Name" [(ngModel)]="singleHero.name">
+            <label>Պարգևատրվել է</label>
+            <input type="number" class="form-control" aria-describedby="emailHelp"
+                   placeholder="Name" [(ngModel)]="singleHero.gettingDate">
+            <label>Ծննդյան տարեթիվ</label>
+            <input type="number" class="form-control" aria-describedby="emailHelp"
+                   placeholder="Name" [(ngModel)]="singleHero.birthDay">
+            <label>Մահվան տարեթիվ</label>
+            <input type="number" class="form-control" aria-describedby="emailHelp"
+                   placeholder="Name" [(ngModel)]="singleHero.deathDay">
+            <br>
+            <button class="btn btn-info" (click)="onOpenForm()">Close</button>
+          </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
-
-
-
-

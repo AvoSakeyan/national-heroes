@@ -1,6 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-
-
+import { Component, Input, OnInit } from '@angular/core';
+import { HeroesService } from '../heroes.service';
 
 @Component({
   selector: 'app-armenianheroes',
@@ -9,9 +8,18 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ArmenianheroesComponent implements OnInit {
   @Input() singleHero;
+  openEditInput = false;
 
-  constructor() { }
+  constructor(private heroesService: HeroesService) { }
+
   ngOnInit() {
   }
 
+  onDeleteHero(id: number) {
+    this.heroesService.deleteHero(id);
+  }
+
+  onOpenForm() {
+    this.openEditInput = !this.openEditInput;
+  }
 }
