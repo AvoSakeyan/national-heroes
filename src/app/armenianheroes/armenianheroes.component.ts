@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
+// @ts-ignore
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -7,11 +9,24 @@ import {Component, Input, OnInit} from '@angular/core';
   templateUrl: './armenianheroes.component.html',
   styleUrls: ['./armenianheroes.component.scss']
 })
-export class ArmenianheroesComponent implements OnInit {
+export class ArmenianheroesComponent {
   @Input() singleHero;
+  @Output() deleteHero: EventEmitter<number> = new EventEmitter<number>()
 
-  constructor() { }
-  ngOnInit() {
+
+  constructor( private modalService: NgbModal) {
+    // customize default values of modals used by this component tree
+    // config.backdrop = 'static';
+    // config.keyboard = false;
+  }
+
+
+  //===== Delete Button ====>
+  deleteWhenClicking() {
+      this.deleteHero.emit(this.singleHero.id);
+  }
+  open(component ) {
+    this.modalService.open(component);
   }
 
 }

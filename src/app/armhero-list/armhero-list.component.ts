@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MainDataService} from '../Service/main-data.service';
+import {Observable} from 'rxjs';
 
 
 @Component({
@@ -6,63 +8,43 @@ import { Component } from '@angular/core';
   templateUrl: './armhero-list.component.html',
   styleUrls: ['./armhero-list.component.scss']
 })
-export class ArmheroListComponent  {
+export class ArmheroListComponent implements OnInit {
 
-  heroes = [
-    {
-      id : 1,
-      name: 'Վազգեն Առաջին',
-      gettingDate: 1994,
-      birthDay:  1908,
-      placeofbirth: 'Romania/Bucharesti',
-      deathDay: 1994,
-      forWhat: 'Ազգային և հոգևոր արժեքների պահպանման և բազմապատկման գործում բացառիկ ծառայությունների համար',
-    },
-
-    {
-      id : 2,
-      name: 'Վիկտոր Համբարձումյան',
-      gettingDate: 1994,
-      birthDay:  1908,
-      placeofbirth: 'Russian Federation/ Tbilisi',
-      deathDay: 1996,
-      forWhat: 'Համաշխարհային նշանակության գիտական արժեքների ստեղծման, գիտության կազմակերպման բնագավառում մատուցած' +
-                   ' բացառիկ ծառայությունների և ազգանպաստ հասարակական գործունեության համար'
-    },
-    {
-      id: 3,
-      name: 'Ալեք Մանուկյան',
-      gettingDate: 1994,
-      birthDay:  1901,
-      placeofbirth: 'Osman Empire/ Zmurni',
-      deathDay: 1996,
-      forWhat: 'Համազգային նշանակություն ունեցող բացառիկ ծառայությունների, բազմամյա ազգանվեր ու' +
-                'հայրենանվեր գործունեության համար'
-    },
-    {
-      id: 4,
-      name: 'Մոնթե Չառլզի Մելքոնյան',
-      gettingDate: 1996 + 'հետմահու',
-      birthDay:  1957,
-      placeofbirth: 'USA, Kalifornia/Vayselia',
-      deathDay: 1993,
-      forWhat: 'Հայրենիքի պաշտպանության գործում համազգային նշանակություն ունեցող բացառիկ ծառայությունների համար'
-    },
-    {
-      id: 4,
-      name: 'Մոնթե Չառլզի Մելքոնյան',
-      gettingDate: 1996,
-      birthDay:  1957,
-      placeofbirth: 'USA, Kalifornia/Vayselia',
-      deathDay: 1993,
-      forWhat: 'Հայրենիքի պաշտպանության գործում համազգային նշանակություն ունեցող բացառիկ ծառայությունների համար'
-    },
-
-]
+  heroes;
+  userUrl;
 
 
-  constructor() { }
-
-
+  constructor( private mainDataService: MainDataService) { }
+ngOnInit() {
+  this.getListFromService();
+  this.getUrlData();
 
 }
+
+//============== HeroList Array ======>
+private getListFromService(){
+   this.mainDataService.getData().subscribe(list=> this.heroes = list);
+  // console.log("This is because of Optional ");
+}
+
+private getUrlData(){
+  // console.log(this.userUrl);
+    this.mainDataService.getUrl().subscribe(data => {
+      this.userUrl = data;
+    });
+  // console.log(this.userUrl);
+}
+
+//========Test TEst
+
+
+
+
+
+  //======== Delete (filter) the list =========>
+  deleteFromTheList(id) {
+    this.heroes = this.heroes.filter(hero => hero.id !== id)
+  }
+
+}
+
