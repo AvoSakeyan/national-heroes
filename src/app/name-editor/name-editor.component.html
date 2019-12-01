@@ -1,0 +1,24 @@
+<!--<label>-->
+<!--  Name:-->
+<!--  <div>-->
+<!--    <input type="text" [formControl]="name" placeholder="fill your name">-->
+<!--</div>-->
+<!--<p>Value: {{name.value}} </p>-->
+<!--<button (click)="updateValue()">Update</button>-->
+<!--</label>-->
+<form [formGroup]="nameGroup" (ngSubmit)="submitData()" >
+  <div>
+    <label>
+      First name:
+      <input type="text" formControlName="firstname">
+    </label>
+  </div>
+  <div>
+    <label>
+      Last name:
+      <input type="text" formControlName="lastname">
+    </label>
+  </div>
+  <button type="submit" [disabled]="!nameGroup.valid">Submit</button>
+</form>
+

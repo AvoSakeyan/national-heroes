@@ -1,31 +1,45 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AlertModule } from 'ngx-bootstrap';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ArmheroListComponent } from './armhero-list/armhero-list.component';
-import { ArmenianheroesComponent } from './armenianheroes/armenianheroes.component';
-import { EditModalComponent } from './edit-modal/edit-modal.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HeroesComponent } from './heroes/heroes.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { MessagesComponent } from './messages/messages.component';
+import { RoutingModule } from './routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NameEditorComponent } from './name-editor/name-editor.component';
+import {NewModuleModule} from './new-module/new-module.module';
+
+
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ArmheroListComponent,
-    ArmenianheroesComponent,
-    EditModalComponent,
+    HeroesComponent,
+    HeroDetailComponent,
+    MessagesComponent,
+    DashboardComponent,
+    NameEditorComponent,
+
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    AlertModule.forRoot(),
     FormsModule,
     NgbModule,
-    HttpClientModule
+    RoutingModule,
+    RoutingModule,
+    ReactiveFormsModule,
+    NewModuleModule
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
